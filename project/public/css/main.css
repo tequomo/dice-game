@@ -1,0 +1,85 @@
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 100;
+  src: local(''),
+       url('../fonts/lato-v23-latin-100.woff2') format('woff2'),
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 300;
+  src: local(''),
+       url('../fonts/lato-v23-latin-300.woff2') format('woff2'),
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 400;
+  src: local(''),
+       url('../fonts/lato-v23-latin-regular.woff2') format('woff2'),
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 700;
+  src: local(''),
+       url('../fonts/lato-v23-latin-700.woff2') format('woff2'),
+}
+
+@font-face {
+  font-family: 'Lato';
+  font-style: normal;
+  font-weight: 900;
+  src: local(''),
+       url('../fonts/lato-v23-latin-900.woff2') format('woff2'),
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Lato', sans-serif;
+}
+
+body {
+  /* display: flex;
+  justify-content: center;
+  align-items: center; */
+  min-height: 100vh;
+}
+
+.player-info__wrapper
+{
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  /* justify-content: center;
+  align-items: center; */
+  min-height: 100vh;
+}
+
+.player-info
+{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  /* font-family: "Montserrat", "Arial", sans-serif; */
+  font-weight: 100;
+  font-size: 18px;
+}
+
+.player-info__title
+{
+  font-weight: 300;
+  font-size: 32px;
+  text-transform: uppercase;
+}
+
+.player-info__total-score
+{
+  font-size: 36px;
+}
