@@ -1,9 +1,9 @@
-@font-face {
+/* @font-face {
   font-family: 'Lato';
   font-style: normal;
   font-weight: 100;
   src: local(''),
-       url('../fonts/lato-v23-latin-100.woff2') format('woff2'),
+       url('../fonts/Lato-Thin.woff2') format('woff2'),
 }
 
 @font-face {
@@ -11,7 +11,7 @@
   font-style: normal;
   font-weight: 300;
   src: local(''),
-       url('../fonts/lato-v23-latin-300.woff2') format('woff2'),
+       url('../fonts/Lato-Light.woff2') format('woff2'),
 }
 
 @font-face {
@@ -19,7 +19,7 @@
   font-style: normal;
   font-weight: 400;
   src: local(''),
-       url('../fonts/lato-v23-latin-regular.woff2') format('woff2'),
+       url('../fonts/Lato-Regular.woff2') format('woff2'),
 }
 
 @font-face {
@@ -27,7 +27,7 @@
   font-style: normal;
   font-weight: 700;
   src: local(''),
-       url('../fonts/lato-v23-latin-700.woff2') format('woff2'),
+       url('../fonts/Lato-Bold.woff2') format('woff2'),
 }
 
 @font-face {
@@ -35,29 +35,26 @@
   font-style: normal;
   font-weight: 900;
   src: local(''),
-       url('../fonts/lato-v23-latin-900.woff2') format('woff2'),
-}
+       url('../fonts/Lato-Black.woff2') format('woff2'),
+} */
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   font-family: 'Lato', sans-serif;
+  font-weight: 100;
 }
 
 body {
-  /* display: flex;
-  justify-content: center;
-  align-items: center; */
   min-height: 100vh;
+  background: #f8f8ff;
 }
 
 .player-info__wrapper
 {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  /* justify-content: center;
-  align-items: center; */
   min-height: 100vh;
 }
 
@@ -67,19 +64,193 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  /* font-family: "Montserrat", "Arial", sans-serif; */
   font-weight: 100;
   font-size: 18px;
 }
 
+.player--current
+{
+  background: #f0f0f0;
+}
+
+.player--current .player-info__title
+{
+  color: #000;
+  font-weight: 300;
+}
+
 .player-info__title
 {
-  font-weight: 300;
-  font-size: 32px;
+  font-weight: lighter;
+  font-size: 40px;
   text-transform: uppercase;
+  padding-bottom: 20px;
+  color: #808080;
+  margin-left: 10px;
+}
+
+.player--current .player-info__title::after
+{
+  position: relative;
+  display: inline-block;
+  top: -10px;
+  right: -10px;
+  content: '';
+  width: 10px;
+  height: 10px;
+  background: #ff2e2e;
+  border-radius: 50%;
 }
 
 .player-info__total-score
 {
-  font-size: 36px;
+  font-size: 70px;
+  padding-bottom: 70px;
+  font-weight: 100;
+  color: #ff2e2e;
+}
+
+.player-info__current-score
+{
+  position: relative;
+  width: 100px;
+  height: 70px;
+  background: #ff2e2e;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-transform: uppercase;
+}
+
+.current-score__title
+{
+  font-size: 0.6em;
+  font-weight: 300;
+  padding-bottom: 15px;
+}
+
+.current-score__value
+{
+  font-size: 1.5em;
+  color: #f8f8ff;
+}
+
+.controls
+{
+  position: absolute;
+  top: 50px;
+  left: calc(50% - 75px);
+  width: 150px;
+  text-transform: uppercase;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls__dice
+{
+  margin: 0;
+  margin: 15px 0;
+  box-shadow: 0 15px 25px rgba(0, 0, 0, 0.15);
+  border-radius: 5px;
+}
+
+.controls__dice img
+{
+  display: block;
+  width: 100px;
+  height: 100px;
+  margin: 0;
+  padding: 0;
+  border-radius: 5px;
+}
+
+.controls__new-game
+{
+  font-family: 'Lato', sans-serif;
+  font-size: 1.2em;
+  font-weight: 300;
+  text-transform: uppercase;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 30px;
+  border: 0;
+  background: transparent;
+}
+
+.controls__new-game::before
+{
+  margin-right: 10px;
+  content: '';
+  width: 25px;
+  height: 25px;
+  background-image: url('../img/svg/add-circle-outline.svg');
+}
+
+.controls__dice-roll
+{
+  font-family: 'Lato', sans-serif;
+  font-size: 1.2em;
+  font-weight: 300;
+  text-transform: uppercase;
+  border: 0;
+  padding: 25px 0;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls__dice-roll::before
+{
+  margin-right: 10px;
+  content: '';
+  width: 30px;
+  height: 30px;
+  background-image: url('../img/svg/rotate.svg');
+}
+
+.controls__score-hold
+{
+  font-family: 'Lato', sans-serif;
+  font-size: 1em;
+  font-weight: 300;
+  text-transform: uppercase;
+  border: 0;
+  padding-bottom: 20px;
+  background: transparent;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.controls__score-hold::before
+{
+  margin-right: 10px;
+  content: '';
+  width: 25px;
+  height: 25px;
+  background-image: url('../img/svg/hold.svg');
+}
+
+.controls__final-score
+{
+  width: 120px;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.9em;
+  font-weight: 300;
+  text-transform: uppercase;
+  padding: 10px 10px;
+  border: 1px solid #808080;
+  text-align: center;
+  color: #808080;
+}
+
+.controls__final-score:focus, .controls__final-score:active
+{
+  border: 1px solid #808080;
+  outline: none;
 }
