@@ -1,3 +1,5 @@
+import FinalScore from "../final-score/final-score";
+
 function Controls() {
   return (
     <div className="controls">
@@ -10,7 +12,7 @@ function Controls() {
     </div>
     <button className="controls__dice-roll">Roll dice</button>
     <button className="controls__score-hold">Hold</button>
-    <input className="controls__final-score" type="text" placeholder="final score"/>
+    <FinalScore />
   </div>
   )
 }
