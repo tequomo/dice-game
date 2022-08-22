@@ -7,3 +7,10 @@ export const setFinalScore = createAction(
     payload: finalScore,
   }),
 );
+
+export const setActivePlayer = createAction(
+  ActionType.SetActivePlayer,
+  (activePlayer: number) => ({
+    payload: activePlayer,
+  }),
+);

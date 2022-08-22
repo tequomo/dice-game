@@ -149,6 +149,14 @@ body {
   align-items: center;
 }
 
+.controls__dice-wrapper
+{
+  margin: 0;
+  padding: 0;
+  background: transparent;
+  min-height: 245px;
+}
+
 .controls__dice
 {
   margin: 0;
@@ -179,6 +187,15 @@ body {
   margin-bottom: 30px;
   border: 0;
   background: transparent;
+  transition: 0.1s;
+}
+
+.controls__new-game:hover,
+.controls__score-hold:hover,
+.controls__dice-roll:hover
+{
+  font-weight: 400;
+  transition: 0.1s;
 }
 
 .controls__new-game::before
@@ -188,6 +205,15 @@ body {
   width: 25px;
   height: 25px;
   background-image: url('../img/svg/add-circle-outline.svg');
+  transition: 0.3s;
+}
+
+.controls__new-game:hover:before,
+.controls__score-hold:hover::before,
+.controls__dice-roll:hover::before
+{
+  margin-right: 15px;
+  transition: 0.3s;
 }
 
 .controls__dice-roll
@@ -202,6 +228,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.1s;
 }
 
 .controls__dice-roll::before
@@ -211,6 +238,7 @@ body {
   width: 30px;
   height: 30px;
   background-image: url('../img/svg/rotate.svg');
+  transition: 0.3s;
 }
 
 .controls__score-hold
@@ -225,6 +253,7 @@ body {
   display: flex;
   justify-content: center;
   align-items: center;
+  transition: 0.1s;
 }
 
 .controls__score-hold::before
@@ -234,6 +263,7 @@ body {
   width: 25px;
   height: 25px;
   background-image: url('../img/svg/hold.svg');
+  transition: 0.3s;
 }
 
 .controls__final-score
