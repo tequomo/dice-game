@@ -14,3 +14,31 @@ export const setActivePlayer = createAction(
     payload: activePlayer,
   }),
 );
+
+export const setCurrentScore = createAction(
+  ActionType.SetCurrentScore,
+  (currentScore: number) => ({
+    payload: currentScore,
+  }),
+);
+
+export const setCurrentScore1 = createAction(
+  ActionType.SetCurrentScore,
+  (currentScore: number) => ({
+    payload: currentScore,
+  }),
+);
+
+export const setTotalScore = createAction(
+  ActionType.SetTotalScore,
+  (totalScore: number) => ({
+    payload: totalScore,
+  }),
+);
+// !!!???
+export const setDiceShow = createAction(
+  ActionType.SetDiceShow,
+  (diceShow: boolean) => ({
+    payload: diceShow,
+  }),
+);

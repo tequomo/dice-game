@@ -2,7 +2,7 @@ import { ChangeEvent, useState } from "react";
 import { useDispatch } from "react-redux";
 import { setFinalScore } from "../../store/reducers/action";
 
-function FinalScore() {
+function FinalScore(): JSX.Element {
 
 const [score, setScore] = useState<string>('');
 

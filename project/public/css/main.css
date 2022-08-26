@@ -51,7 +51,7 @@ body {
   background: #f8f8ff;
 }
 
-.player-info__wrapper
+.player-group
 {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -68,12 +68,12 @@ body {
   font-size: 18px;
 }
 
-.player--current
+.player-info--current
 {
   background: #f0f0f0;
 }
 
-.player--current .player-info__title
+.player-info--current .player-info__title
 {
   color: #000;
   font-weight: 300;
@@ -89,7 +89,7 @@ body {
   margin-left: 10px;
 }
 
-.player--current .player-info__title::after
+.player-info--current .player-info__title::after
 {
   position: relative;
   display: inline-block;
@@ -110,7 +110,7 @@ body {
   color: #ff2e2e;
 }
 
-.player-info__current-score
+.player-info .current-score
 {
   position: relative;
   width: 100px;
