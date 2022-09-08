@@ -15,15 +15,15 @@ export const setActivePlayer = createAction(
   }),
 );
 
-export const setCurrentScore = createAction(
-  ActionType.SetCurrentScore,
+export const setCurrentScore2 = createAction(
+  ActionType.SetCurrentScore2,
   (currentScore: number) => ({
     payload: currentScore,
   }),
 );
 
 export const setCurrentScore1 = createAction(
-  ActionType.SetCurrentScore,
+  ActionType.SetCurrentScore1,
   (currentScore: number) => ({
     payload: currentScore,
   }),

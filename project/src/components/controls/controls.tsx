@@ -2,7 +2,7 @@ import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { DEFAULT_CURRENT_SCORE, DEFAULT_DICE_VALUES } from "../../const";
-import { setCurrentScore } from "../../store/reducers/action";
+import { setCurrentScore2 } from "../../store/reducers/action";
 import { getPlayer1CurrentScore } from "../../store/reducers/player1-data/selectors";
 import { generateDiceValue, sumValues } from "../../utils/utils";
 import FinalScore from "../final-score/final-score";
@@ -14,14 +14,14 @@ function Controls() {
   const dispatch = useDispatch();
 
   const [diceValues, setDiceValues] = useState<number[]>(DEFAULT_DICE_VALUES);
-  const [player1CurrentScore, setPlayer1CurrentScore] = useState<number>(DEFAULT_CURRENT_SCORE);
+  const [player2CurrentScore, setPlayer2CurrentScore] = useState<number>(DEFAULT_CURRENT_SCORE);
 
   const rollDice = () => {
     setDiceValues([generateDiceValue(), generateDiceValue()]);
     const current = currentScore + sumValues(diceValues);
-    dispatch(setCurrentScore(current));
-    setPlayer1CurrentScore(currentScore + sumValues(diceValues));
-    console.log('Current Score = ', player1CurrentScore);
+    dispatch(setCurrentScore2(current));
+    setPlayer2CurrentScore(currentScore + sumValues(diceValues));
+    console.log('Current Score = ', player2CurrentScore);
   };
 
   return (

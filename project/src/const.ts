@@ -1,5 +1,5 @@
 export const DEFAULT_FINAL_SCORE = 100;
-export const DEFAULT_ACTIVE_PLAYER = 1;
+export const DEFAULT_ACTIVE_PLAYER = 2;
 export const DEFAULT_DICE_VALUES = [0, 0];
 export const DICE_MIN_VALUE = 1;
 export const DICE_MAX_VALUE = 6;
