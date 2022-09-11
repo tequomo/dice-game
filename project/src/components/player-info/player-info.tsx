@@ -13,7 +13,7 @@ function PlayerInfo({ playerNumber, currentScore, totalScore }: PlayerInfoPropsT
   const activePlayer = useSelector(getActivePlayer);
 
   return (
-    <div className={`player-info player1 ${activePlayer === playerNumber ? ACTIVE_PLAYER_CLASS : ''}`}>
+    <div className={`player-info player${playerNumber} ${activePlayer === playerNumber ? ACTIVE_PLAYER_CLASS : ''}`}>
     <div className="player-info__title">Player {playerNumber}</div>
     <div className="player-info__total-score">{totalScore}</div>
     <div className="player-info current-score">
