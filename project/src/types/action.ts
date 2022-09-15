@@ -7,4 +7,13 @@ export enum ActionType {
   SetDiceShow = 'main/setDiceShow',
 };
 
-export const actionTypeGenerator = (action: string, player: number): string => `player${player}/${action}`;
+export enum MainStateActionType {
+  SetFinalScore = 'main/setFinalScore',
+  SetActivePlayer = 'main/setActivePlayer',
+  SetDiceShow = 'main/setDiceShow',
+};
+
+export enum PlayerActionType {
+  SetCurrentScore = 'setCurrentScore',
+  SetTotalScore  = 'setTotalScore',
+};

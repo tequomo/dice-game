@@ -2,15 +2,17 @@ import { MouseEvent, useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { DEFAULT_CURRENT_SCORE, DEFAULT_DICE_VALUES } from "../../const";
-import { setCurrentScore2 } from "../../store/reducers/action";
-import { getPlayer2CurrentScore } from "../../store/reducers/player2-data/selectors";
+import { setCurrentScore } from "../../store/reducers/action";
+import { getActivePlayer } from "../../store/reducers/app-state/selectors";
+import { getPlayerCurrentScore } from "../../store/reducers/player-data/selectors";
 import { generateDiceValue, sumValues } from "../../utils/utils";
 import FinalScore from "../final-score/final-score";
 import Dice from "./dices/dice";
 
 function Controls() {
 
-  const currentScore = useSelector(getPlayer2CurrentScore);
+  const activePlayer = useSelector(getActivePlayer);
+  const currentScore = useSelector(getPlayerCurrentScore(activePlayer));
   const dispatch = useDispatch();
 
   const [diceValues, setDiceValues] = useState<number[]>(DEFAULT_DICE_VALUES);
@@ -21,7 +23,7 @@ function Controls() {
   };
 
   const updateCurrentScore = useCallback((): void => {
-    dispatch(setCurrentScore2(player2CurrentScore));
+    dispatch(setCurrentScore(player2CurrentScore));
     // console.log('Current Score = ', player2CurrentScore);
   }, [dispatch, player2CurrentScore]);
 

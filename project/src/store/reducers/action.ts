@@ -1,5 +1,7 @@
 import { createAction } from "@reduxjs/toolkit";
-import { ActionType } from "../../types/action";
+import { PlayerNumber } from "../../const";
+import { ActionType, PlayerActionType } from "../../types/action";
+import { actionTypeGenerator } from "../../utils/common";
 
 export const setFinalScore = createAction(
   ActionType.SetFinalScore,
@@ -12,6 +14,13 @@ export const setActivePlayer = createAction(
   ActionType.SetActivePlayer,
   (activePlayer: number) => ({
     payload: activePlayer,
+  }),
+);
+
+export const setCurrentScore = (player: PlayerNumber) => createAction(
+  actionTypeGenerator(player, PlayerActionType.SetCurrentScore),
+  (currentScore: number) => ({
+    payload: currentScore,
   }),
 );
 

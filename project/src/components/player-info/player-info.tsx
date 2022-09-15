@@ -1,16 +1,17 @@
 import { useSelector } from "react-redux";
 import { ACTIVE_PLAYER_CLASS } from "../../const";
 import { getActivePlayer } from "../../store/reducers/app-state/selectors";
+import { getPlayerCurrentScore, getPlayerTotalScore } from "../../store/reducers/player-data/selectors";
 
 type PlayerInfoPropsType = {
   playerNumber: number,
-  currentScore: number,
-  totalScore: number,
 };
 
-function PlayerInfo({ playerNumber, currentScore, totalScore }: PlayerInfoPropsType): JSX.Element {
+function PlayerInfo({ playerNumber }: PlayerInfoPropsType): JSX.Element {
 
   const activePlayer = useSelector(getActivePlayer);
+  const currentScore = useSelector(getPlayerCurrentScore(activePlayer));
+  const totalScore = useSelector(getPlayerTotalScore(activePlayer));
 
   return (
     <div className={`player-info player${playerNumber} ${activePlayer === playerNumber ? ACTIVE_PLAYER_CLASS : ''}`}>
