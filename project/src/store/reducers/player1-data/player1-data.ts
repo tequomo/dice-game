@@ -1,7 +1,7 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { DEFAULT_CURRENT_SCORE, DEFAULT_TOTAL_SCORE } from "../../../const";
 import { Player1Data } from "../../../types/player-data";
-import { setCurrentScore1 } from "../action";
+import { setPlayer1CurrentScore } from "../action";
 
 const initialState: Player1Data = {
   currentScore: DEFAULT_CURRENT_SCORE,
@@ -10,7 +10,7 @@ const initialState: Player1Data = {
 
 const player1Data = createReducer(initialState, (builder) => {
   builder
-  .addCase(setCurrentScore1, (state, action) => {
+  .addCase(setPlayer1CurrentScore, (state, action) => {
     state.currentScore = action.payload;
   });
 });

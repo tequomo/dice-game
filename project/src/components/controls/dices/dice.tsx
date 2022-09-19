@@ -10,10 +10,10 @@ function Dice({ diceValues }: DiceProps) {
         diceValues[0] === 0 ? '' :
           <>
             <div className="controls__dice dice1">
-              <img src={`./img/dice-${diceValues[0]}.png`} alt="" />
+              <img src={`./img/dice-${diceValues[0]}.png`} alt={`${diceValues[0]}`} />
             </div>
             <div className="controls__dice dice2">
-              <img src={`./img/dice-${diceValues[1]}.png`} alt="" />
+              <img src={`./img/dice-${diceValues[1]}.png`} alt={`${diceValues[1]}`} />
             </div>
           </>
       }

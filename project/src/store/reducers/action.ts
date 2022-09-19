@@ -24,15 +24,15 @@ export const setCurrentScore = (player: PlayerNumber) => createAction(
   }),
 );
 
-export const setCurrentScore2 = createAction(
-  ActionType.SetCurrentScore2,
+export const setPlayer1CurrentScore = createAction(
+  ActionType.SetPlayer1CurrentScore,
   (currentScore: number) => ({
     payload: currentScore,
   }),
 );
 
-export const setCurrentScore1 = createAction(
-  ActionType.SetCurrentScore1,
+export const setPlayer2CurrentScore = createAction(
+  ActionType.SetPlayer2CurrentScore,
   (currentScore: number) => ({
     payload: currentScore,
   }),
