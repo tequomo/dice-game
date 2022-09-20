@@ -38,8 +38,8 @@ export const setPlayer2CurrentScore = createAction(
   }),
 );
 
-export const setTotalScore = createAction(
-  ActionType.SetTotalScore,
+export const setTotalScore = (player: PlayerNumber) => createAction(
+  actionTypeGenerator(player, PlayerActionType.SetTotalScore),
   (totalScore: number) => ({
     payload: totalScore,
   }),

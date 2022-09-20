@@ -10,8 +10,8 @@ type PlayerInfoPropsType = {
 function PlayerInfo({ playerNumber }: PlayerInfoPropsType): JSX.Element {
 
   const activePlayer = useSelector(getActivePlayer);
-  const currentScore = useSelector(getPlayerCurrentScore(activePlayer));
-  const totalScore = useSelector(getPlayerTotalScore(activePlayer));
+  const currentScore = useSelector(getPlayerCurrentScore(playerNumber));
+  const totalScore = useSelector(getPlayerTotalScore(playerNumber));
 
   return (
     <div className={`player-info player${playerNumber} ${activePlayer === playerNumber ? ACTIVE_PLAYER_CLASS : ''}`}>
