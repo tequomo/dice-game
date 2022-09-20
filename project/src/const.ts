@@ -6,6 +6,7 @@ export const DICE_MAX_VALUE = 6;
 export const DEFAULT_CURRENT_SCORE = 0;
 export const DEFAULT_TOTAL_SCORE = 0;
 export const DEFAULT_DICE_SHOW = false;
+export const DOUBLE_SIX = 12;
 
 export enum PlayerNumber {
   Player1 = 1,
