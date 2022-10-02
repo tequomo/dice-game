@@ -1,5 +1,5 @@
 import { createAction } from "@reduxjs/toolkit";
-import { PlayerNumber } from "../../const";
+import { ActionStatus, PlayerNumber } from "../../const";
 import { ActionType, PlayerActionType } from "../../types/action";
 import { actionTypeGenerator } from "../../utils/common";
 
@@ -49,5 +49,12 @@ export const setDiceShow = createAction(
   ActionType.SetDiceShow,
   (diceShow: boolean) => ({
     payload: diceShow,
+  }),
+);
+
+export const setActionStatus = createAction(
+  ActionType.SetActionStatus,
+  (actionStatus: ActionStatus) => ({
+    payload: actionStatus,
   }),
 );

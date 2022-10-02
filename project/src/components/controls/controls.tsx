@@ -1,10 +1,10 @@
 import { MouseEvent, useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { DEFAULT_CURRENT_SCORE, DEFAULT_DICE_VALUES, DEFAULT_TOTAL_SCORE, DOUBLE_SIX } from "../../const";
-import { setCurrentScore, setTotalScore } from "../../store/reducers/action";
+import { ActionStatus, DEFAULT_CURRENT_SCORE, DEFAULT_DICE_VALUES, DEFAULT_TOTAL_SCORE, DOUBLE_SIX, PlayerNumber } from "../../const";
+import { setActionStatus, setActivePlayer, setCurrentScore, setTotalScore } from "../../store/reducers/action";
 // import { getPlayerCurrentScore } from "../../store/reducers/player-data/selectors";
-import { getActivePlayer } from "../../store/reducers/app-state/selectors";
+import { getActionStatus, getActivePlayer } from "../../store/reducers/app-state/selectors";
 import { generateDiceValue, sumValues } from "../../utils/utils";
 import FinalScore from "../final-score/final-score";
 import Dice from "./dices/dice";
@@ -13,6 +13,7 @@ import Dice from "./dices/dice";
 function Controls(): JSX.Element {
 
   const activePlayer = useSelector(getActivePlayer);
+  const actionStatus = useSelector(getActionStatus);
   // const currentScore = useSelector(getPlayerCurrentScore(activePlayer));
   const dispatch = useDispatch();
 
@@ -34,6 +35,13 @@ function Controls(): JSX.Element {
     dispatch(setTotalScore(activePlayer)(playerTotalScore));
   }, [activePlayer, dispatch, playerTotalScore]);
 
+  const togglePlayer = (): void => {
+    const nextPlayer = ((Object.values(PlayerNumber)
+      .filter((value) => !isNaN(Number(value)) && value !== activePlayer)
+    ))[0];
+    dispatch(setActivePlayer(+nextPlayer));
+  };
+
   useEffect(() => {
     const sum = (sumValues(diceValues) === DOUBLE_SIX) ? 0 : playerCurrentScore + sumValues(diceValues);
     setPlayerCurrentScore(sum);
@@ -52,9 +60,14 @@ function Controls(): JSX.Element {
     rollDice();
   };
 
-  const handleHoldButtonClick = (evt: MouseEvent<HTMLButtonElement>): void => {
+  const handleHoldButtonClick = async (evt: MouseEvent<HTMLButtonElement>) => {
+    dispatch(setActionStatus(ActionStatus.Processing));
     setPlayerTotalScore((state) => state + playerCurrentScore);
     resetCurrentValue();
+    dispatch(setActionStatus(ActionStatus.Done));
+    if (actionStatus === ActionStatus.Done) {
+      togglePlayer();
+    }
   };
 
   return (

@@ -5,6 +5,7 @@ export enum ActionType {
   SetPlayer2CurrentScore = 'player2/setCurrentScore',
   SetTotalScore  = 'game/setTotalScore',
   SetDiceShow = 'main/setDiceShow',
+  SetActionStatus = 'main/setActionStatus',
 };
 
 export enum MainStateActionType {
