@@ -1,10 +1,15 @@
 import { MouseEvent, useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
-import { ActionStatus, DEFAULT_CURRENT_SCORE, DEFAULT_DICE_VALUES, DEFAULT_TOTAL_SCORE, DOUBLE_SIX, PlayerNumber } from "../../const";
-import { setActionStatus, setActivePlayer, setCurrentScore, setTotalScore } from "../../store/reducers/action";
-// import { getPlayerCurrentScore } from "../../store/reducers/player-data/selectors";
-import { getActionStatus, getActivePlayer } from "../../store/reducers/app-state/selectors";
+import {
+  DEFAULT_CURRENT_SCORE,
+  DEFAULT_DICE_VALUES,
+  DEFAULT_TOTAL_SCORE,
+  DOUBLE_SIX,
+  PlayerNumber
+} from "../../const";
+import { setActivePlayer, setCurrentScore, setTotalScore } from "../../store/reducers/action";
+import { getActivePlayer } from "../../store/reducers/app-state/selectors";
 import { generateDiceValue, sumValues } from "../../utils/utils";
 import FinalScore from "../final-score/final-score";
 import Dice from "./dices/dice";
@@ -13,8 +18,6 @@ import Dice from "./dices/dice";
 function Controls(): JSX.Element {
 
   const activePlayer = useSelector(getActivePlayer);
-  const actionStatus = useSelector(getActionStatus);
-  // const currentScore = useSelector(getPlayerCurrentScore(activePlayer));
   const dispatch = useDispatch();
 
   const [diceValues, setDiceValues] = useState<number[]>(DEFAULT_DICE_VALUES);
@@ -25,7 +28,11 @@ function Controls(): JSX.Element {
     setDiceValues([generateDiceValue(), generateDiceValue()]);
   };
 
-  const resetCurrentValue = (): void => setPlayerCurrentScore(0);
+  const resetCurrentValue = (): void => {
+    setPlayerCurrentScore(0);
+    setDiceValues(DEFAULT_DICE_VALUES);
+    // setPlayerTotalScore(0);
+  };
 
   const updateCurrentScore = useCallback((): void => {
     dispatch(setCurrentScore(activePlayer)(playerCurrentScore));
@@ -33,7 +40,7 @@ function Controls(): JSX.Element {
 
   const updateTotalScore = useCallback((): void => {
     dispatch(setTotalScore(activePlayer)(playerTotalScore));
-  }, [activePlayer, dispatch, playerTotalScore]);
+  }, [dispatch, playerTotalScore]);
 
   const togglePlayer = (): void => {
     const nextPlayer = ((Object.values(PlayerNumber)
@@ -50,7 +57,7 @@ function Controls(): JSX.Element {
   useEffect(() => {
     console.log('playerCurrentScore = ', playerCurrentScore);
     updateCurrentScore();
-  }, [activePlayer, diceValues, dispatch, playerCurrentScore, updateCurrentScore]);
+  }, [diceValues, dispatch, playerCurrentScore, updateCurrentScore]);
 
   useEffect(() => {
     updateTotalScore();
@@ -61,13 +68,11 @@ function Controls(): JSX.Element {
   };
 
   const handleHoldButtonClick = async (evt: MouseEvent<HTMLButtonElement>) => {
-    dispatch(setActionStatus(ActionStatus.Processing));
     setPlayerTotalScore((state) => state + playerCurrentScore);
     resetCurrentValue();
-    dispatch(setActionStatus(ActionStatus.Done));
-    if (actionStatus === ActionStatus.Done) {
+    setTimeout(() => {
       togglePlayer();
-    }
+    }, 0);
   };
 
   return (

@@ -14,9 +14,3 @@ export enum PlayerNumber {
 };
 
 export const ACTIVE_PLAYER_CLASS = 'player-info--current';
-
-export enum ActionStatus {
-  Idle = 'idle',
-  Processing = 'processing',
-  Done = 'done',
-}
