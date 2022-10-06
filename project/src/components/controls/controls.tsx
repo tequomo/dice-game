@@ -33,7 +33,6 @@ function Controls(): JSX.Element {
   const resetCurrentValue = (): void => {
     setPlayerCurrentScore(0);
     setDiceValues(DEFAULT_DICE_VALUES);
-    // setPlayerTotalScore(0);
   };
 
   const updateCurrentScore = useCallback((): void => {
@@ -52,6 +51,8 @@ function Controls(): JSX.Element {
     ))[0];
     dispatch(setActivePlayer(+nextPlayer));
   };
+
+  const endGame =
 
   useEffect(() => {
     const sum = (sumValues(diceValues) === DOUBLE_SIX) ? 0 : playerCurrentScore + sumValues(diceValues);

@@ -89,6 +89,12 @@ body {
   margin-left: 10px;
 }
 
+.player-info__title--win
+{
+  color:#ff2e2e;
+  font-weight: 300;
+}
+
 .player-info--current .player-info__title::after
 {
   position: relative;
