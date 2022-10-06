@@ -10,6 +10,7 @@ import {
 } from "../../const";
 import { setActivePlayer, setCurrentScore, setTotalScore } from "../../store/reducers/action";
 import { getActivePlayer } from "../../store/reducers/app-state/selectors";
+import { getPlayerTotalScore } from "../../store/reducers/player-data/selectors";
 import { generateDiceValue, sumValues } from "../../utils/utils";
 import FinalScore from "../final-score/final-score";
 import Dice from "./dices/dice";
@@ -18,6 +19,7 @@ import Dice from "./dices/dice";
 function Controls(): JSX.Element {
 
   const activePlayer = useSelector(getActivePlayer);
+  const totalScore = useSelector(getPlayerTotalScore(activePlayer));
   const dispatch = useDispatch();
 
   const [diceValues, setDiceValues] = useState<number[]>(DEFAULT_DICE_VALUES);
@@ -39,7 +41,9 @@ function Controls(): JSX.Element {
   }, [activePlayer, dispatch, playerCurrentScore]);
 
   const updateTotalScore = useCallback((): void => {
-    dispatch(setTotalScore(activePlayer)(playerTotalScore));
+    const totalScoreSum = totalScore + playerTotalScore;
+    dispatch(setTotalScore(activePlayer)(totalScoreSum));
+    setPlayerTotalScore(DEFAULT_TOTAL_SCORE);
   }, [dispatch, playerTotalScore]);
 
   const togglePlayer = (): void => {
