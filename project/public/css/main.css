@@ -198,6 +198,22 @@ body {
   transition: 0.1s;
 }
 
+.controls__new-game:active,
+.controls__score-hold:active,
+.controls__dice-roll:active
+{
+  font-weight: 400;
+  font-size: 1.1em;
+  transition: 0.1s;
+}
+
+.controls__score-hold:active
+{
+  font-weight: 400;
+  font-size: 0.9em;
+  transition: 0.1s;
+}
+
 .controls__new-game::before
 {
   margin-right: 10px;

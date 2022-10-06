@@ -55,19 +55,18 @@ function Controls(): JSX.Element {
   }, [diceValues]);
 
   useEffect(() => {
-    console.log('playerCurrentScore = ', playerCurrentScore);
     updateCurrentScore();
   }, [diceValues, dispatch, playerCurrentScore, updateCurrentScore]);
 
   useEffect(() => {
     updateTotalScore();
-  }, [updateTotalScore])
+  }, [playerTotalScore, updateTotalScore])
 
   const handleRollButtonClick = (evt: MouseEvent<HTMLButtonElement>): void => {
     rollDice();
   };
 
-  const handleHoldButtonClick = async (evt: MouseEvent<HTMLButtonElement>) => {
+  const handleHoldButtonClick = async (evt: MouseEvent<HTMLButtonElement>): Promise<void> => {
     setPlayerTotalScore((state) => state + playerCurrentScore);
     resetCurrentValue();
     setTimeout(() => {
