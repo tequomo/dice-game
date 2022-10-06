@@ -1,10 +1,10 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { DEFAULT_ACTIVE_PLAYER, DEFAULT_FINAL_SCORE } from "../../../const";
+import { DefaultScoreValue, DEFAULT_ACTIVE_PLAYER } from "../../../const";
 import { AppState } from "../../../types/state";
 import { setActivePlayer, setFinalScore } from "../action";
 
 const initialState:AppState = {
-  finalScore: DEFAULT_FINAL_SCORE,
+  finalScore: DefaultScoreValue.Final,
   activePlayer: DEFAULT_ACTIVE_PLAYER,
 };
 

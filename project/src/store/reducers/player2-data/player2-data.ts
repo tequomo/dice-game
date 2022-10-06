@@ -1,11 +1,11 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { DEFAULT_CURRENT_SCORE, DEFAULT_TOTAL_SCORE } from "../../../const";
+import { DefaultScoreValue } from "../../../const";
 import { Player2Data } from "../../../types/player-data";
 import { setPlayer2CurrentScore } from "../action";
 
 const initialState: Player2Data = {
-  currentScore: DEFAULT_CURRENT_SCORE,
-  totalScore: DEFAULT_TOTAL_SCORE,
+  currentScore: DefaultScoreValue.Current,
+  totalScore: DefaultScoreValue.Total,
 };
 
 const player2Data = createReducer(initialState, (builder) => {

@@ -2,10 +2,9 @@ import { MouseEvent, useCallback, useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import {
-  DEFAULT_CURRENT_SCORE,
+  DefaultScoreValue,
   DEFAULT_DICE_VALUES,
-  DEFAULT_TOTAL_SCORE,
-  DOUBLE_SIX,
+  DiceValue,
   PlayerNumber
 } from "../../const";
 import { setActivePlayer, setCurrentScore, setTotalScore } from "../../store/reducers/action";
@@ -23,8 +22,8 @@ function Controls(): JSX.Element {
   const dispatch = useDispatch();
 
   const [diceValues, setDiceValues] = useState<number[]>(DEFAULT_DICE_VALUES);
-  const [playerCurrentScore, setPlayerCurrentScore] = useState<number>(DEFAULT_CURRENT_SCORE);
-  const [playerTotalScore, setPlayerTotalScore] = useState<number>(DEFAULT_TOTAL_SCORE);
+  const [playerCurrentScore, setPlayerCurrentScore] = useState<number>(DefaultScoreValue.Current);
+  const [playerTotalScore, setPlayerTotalScore] = useState<number>(DefaultScoreValue.Total);
 
   const rollDice = () => {
     setDiceValues([generateDiceValue(), generateDiceValue()]);
@@ -42,7 +41,7 @@ function Controls(): JSX.Element {
   const updateTotalScore = useCallback((): void => {
     const totalScoreSum = totalScore + playerTotalScore;
     dispatch(setTotalScore(activePlayer)(totalScoreSum));
-    setPlayerTotalScore(DEFAULT_TOTAL_SCORE);
+    setPlayerTotalScore(DefaultScoreValue.Total);
   }, [dispatch, playerTotalScore]);
 
   const togglePlayer = (): void => {
@@ -52,10 +51,10 @@ function Controls(): JSX.Element {
     dispatch(setActivePlayer(+nextPlayer));
   };
 
-  const endGame =
+  // const endGame =
 
   useEffect(() => {
-    const sum = (sumValues(diceValues) === DOUBLE_SIX) ? 0 : playerCurrentScore + sumValues(diceValues);
+    const sum = (sumValues(diceValues) === DiceValue.DoubleSix) ? 0 : playerCurrentScore + sumValues(diceValues);
     setPlayerCurrentScore(sum);
   }, [diceValues]);
 
