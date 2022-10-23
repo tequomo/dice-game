@@ -56,6 +56,13 @@ function Controls(): JSX.Element {
   useEffect(() => {
     const sum = (sumValues(diceValues) === DiceValue.DoubleSix) ? 0 : playerCurrentScore + sumValues(diceValues);
     setPlayerCurrentScore(sum);
+    // if(sumValues(diceValues) === DiceValue.DoubleSix) {
+    //   resetCurrentValue();
+    //   setTimeout(() => {
+    //     togglePlayer();
+    //   }, 0)
+    // }
+    // else setPlayerCurrentScore(playerCurrentScore + sumValues(diceValues));
   }, [diceValues]);
 
   useEffect(() => {
