@@ -8,7 +8,7 @@ import {
   PlayerNumber
 } from "../../const";
 import { setActivePlayer, setCurrentScore, setTotalScore } from "../../store/reducers/action";
-import { getActivePlayer } from "../../store/reducers/app-state/selectors";
+import { getActivePlayer, getIsRoundEnded } from "../../store/reducers/app-state/selectors";
 import { getPlayerTotalScore } from "../../store/reducers/player-data/selectors";
 import { generateDiceValue, sumValues } from "../../utils/utils";
 import FinalScore from "../final-score/final-score";
@@ -19,6 +19,8 @@ function Controls(): JSX.Element {
 
   const activePlayer = useSelector(getActivePlayer);
   const totalScore = useSelector(getPlayerTotalScore(activePlayer));
+  const isRoundEnded = useSelector(getIsRoundEnded);
+
   const dispatch = useDispatch();
 
   const [diceValues, setDiceValues] = useState<number[]>(DEFAULT_DICE_VALUES);
@@ -48,10 +50,10 @@ function Controls(): JSX.Element {
     const nextPlayer = ((Object.values(PlayerNumber)
       .filter((value) => !isNaN(Number(value)) && value !== activePlayer)
     ))[0];
-    dispatch(setActivePlayer(+nextPlayer));
+    if (!isRoundEnded) {
+      dispatch(setActivePlayer(+nextPlayer));
+    }
   };
-
-  // const endGame =
 
   useEffect(() => {
     const sum = (sumValues(diceValues) === DiceValue.DoubleSix) ? 0 : playerCurrentScore + sumValues(diceValues);
@@ -82,8 +84,8 @@ function Controls(): JSX.Element {
     <div className="controls">
       <button className="controls__new-game">New game</button>
       <Dice diceValues={diceValues} />
-      <button className="controls__dice-roll" onClick={handleRollButtonClick}>Roll dice</button>
-      <button className="controls__score-hold" onClick={handleHoldButtonClick}>Hold</button>
+      <button className="controls__dice-roll" onClick={handleRollButtonClick} disabled={isRoundEnded}>Roll dice</button>
+      <button className="controls__score-hold" onClick={handleHoldButtonClick} disabled={isRoundEnded}>Hold</button>
       <FinalScore />
     </div>
   )

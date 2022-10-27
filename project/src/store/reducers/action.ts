@@ -1,6 +1,6 @@
 import { createAction } from "@reduxjs/toolkit";
 import { PlayerNumber } from "../../const";
-import { ActionType, PlayerActionType } from "../../types/action";
+import { ActionType, MainStateActionType, PlayerActionType } from "../../types/action";
 import { actionTypeGenerator } from "../../utils/common";
 
 export const setFinalScore = createAction(
@@ -42,5 +42,12 @@ export const setTotalScore = (player: PlayerNumber) => createAction(
   actionTypeGenerator(player, PlayerActionType.SetTotalScore),
   (totalScore: number) => ({
     payload: totalScore,
+  }),
+);
+
+export const setIsRoundEnded = createAction(
+  MainStateActionType.SetIsRoundEnded,
+  (isRoundEnded: boolean) => ({
+    payload: isRoundEnded,
   }),
 );

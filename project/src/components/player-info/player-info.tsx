@@ -1,5 +1,8 @@
+import { useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { useSelector } from "react-redux";
 import { InfoTitle, PlayerStyle } from "../../const";
+import { setIsRoundEnded } from "../../store/reducers/action";
 import { getActivePlayer, getFinalScore } from "../../store/reducers/app-state/selectors";
 import { getPlayerCurrentScore, getPlayerTotalScore } from "../../store/reducers/player-data/selectors";
 
@@ -14,7 +17,15 @@ function PlayerInfo({ playerNumber }: PlayerInfoPropsType): JSX.Element {
   const currentScore = useSelector(getPlayerCurrentScore(playerNumber));
   const totalScore = useSelector(getPlayerTotalScore(playerNumber));
 
+  const dispatch = useDispatch();
+
   const isWin = totalScore >= finalScore;
+
+useEffect(() => {
+  if(isWin) {
+    dispatch(setIsRoundEnded(true));
+  }
+},[dispatch, isWin])
 
   return (
     <div className={`player-info player${playerNumber} ${activePlayer === playerNumber ? PlayerStyle.Active : ''}`}>

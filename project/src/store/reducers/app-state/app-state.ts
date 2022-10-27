@@ -1,11 +1,12 @@
 import { createReducer } from "@reduxjs/toolkit";
 import { DefaultScoreValue, DEFAULT_ACTIVE_PLAYER } from "../../../const";
 import { AppState } from "../../../types/state";
-import { setActivePlayer, setFinalScore } from "../action";
+import { setActivePlayer, setFinalScore, setIsRoundEnded } from "../action";
 
 const initialState:AppState = {
   finalScore: DefaultScoreValue.Final,
   activePlayer: DEFAULT_ACTIVE_PLAYER,
+  isRoundEnded: false,
 };
 
 const appState = createReducer(initialState, (builder) => {
@@ -15,6 +16,9 @@ const appState = createReducer(initialState, (builder) => {
   })
   .addCase(setActivePlayer, (state, action) => {
     state.activePlayer = action.payload;
+  })
+  .addCase(setIsRoundEnded, (state, action) => {
+    state.isRoundEnded = action.payload;
   });
 });
 

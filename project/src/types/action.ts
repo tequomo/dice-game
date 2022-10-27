@@ -11,6 +11,7 @@ export enum ActionType {
 export enum MainStateActionType {
   SetFinalScore = 'main/setFinalScore',
   SetActivePlayer = 'main/setActivePlayer',
+  SetIsRoundEnded = 'main/setIsRoundEnded',
   SetDiceShow = 'main/setDiceShow',
 };
 
