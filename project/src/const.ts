@@ -1,4 +1,4 @@
-export const DEFAULT_ACTIVE_PLAYER = 2;
+export const DEFAULT_ACTIVE_PLAYER = 1;
 export const DEFAULT_DICE_VALUES = [0, 0];
 
 export enum DefaultScoreValue {

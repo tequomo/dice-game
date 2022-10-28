@@ -82,9 +82,11 @@ function Controls(): JSX.Element {
   const handleHoldButtonClick = async (evt: MouseEvent<HTMLButtonElement>): Promise<void> => {
     setPlayerTotalScore((state) => state + playerCurrentScore);
     resetCurrentValue();
-    setTimeout(() => {
-      togglePlayer();
-    }, 0);
+    if (!isRoundEnded) {
+      setTimeout(() => {
+        togglePlayer();
+      }, 0);
+    };
   };
 
   return (
