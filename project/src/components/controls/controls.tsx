@@ -46,14 +46,14 @@ function Controls(): JSX.Element {
     setPlayerTotalScore(DefaultScoreValue.Total);
   }, [dispatch, playerTotalScore]);
 
-  const togglePlayer = (): void => {
+  const togglePlayer = useCallback((): void => {
     const nextPlayer = ((Object.values(PlayerNumber)
       .filter((value) => !isNaN(Number(value)) && value !== activePlayer)
     ))[0];
     if (!isRoundEnded) {
       dispatch(setActivePlayer(+nextPlayer));
     }
-  };
+  },[isRoundEnded]);
 
   useEffect(() => {
     const sum = (sumValues(diceValues) === DiceValue.DoubleSix) ? 0 : playerCurrentScore + sumValues(diceValues);
@@ -73,6 +73,8 @@ function Controls(): JSX.Element {
 
   useEffect(() => {
     updateTotalScore();
+    resetCurrentValue();
+    togglePlayer();
   }, [playerTotalScore, updateTotalScore])
 
   const handleRollButtonClick = (evt: MouseEvent<HTMLButtonElement>): void => {
@@ -81,12 +83,12 @@ function Controls(): JSX.Element {
 
   const handleHoldButtonClick = async (evt: MouseEvent<HTMLButtonElement>): Promise<void> => {
     setPlayerTotalScore((state) => state + playerCurrentScore);
-    resetCurrentValue();
-    if (!isRoundEnded) {
-      setTimeout(() => {
-        togglePlayer();
-      }, 0);
-    };
+    // resetCurrentValue();
+    // if (!isRoundEnded) {
+    //   setTimeout(() => {
+    //     togglePlayer();
+    //   }, 0);
+    // };
   };
 
   return (
