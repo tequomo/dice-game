@@ -7,11 +7,16 @@
 git clone git@github.com:tequomo/dice-game.git
 ```
 
-Перейдите в папку _dice-game_, инсталлируйте зависимости и запустите сервер
+Перейдите в папку _dice-game_ и инсталлируйте зависимости
 
 ```sh
 cd dice-game
 npm install
+```
+Перейдите в папку _project_ и запустите сервер
+
+```sh
+cd project
 npm start
 ```
 
