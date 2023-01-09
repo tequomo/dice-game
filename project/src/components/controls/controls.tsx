@@ -31,6 +31,10 @@ function Controls(): JSX.Element {
     setDiceValues([generateDiceValue(), generateDiceValue()]);
   };
 
+  const holdButtonHandler = () => {
+    setPlayerTotalScore((state) => state + playerCurrentScore);
+  }
+
   const resetCurrentValue = (): void => {
     setPlayerCurrentScore(0);
     setDiceValues(DEFAULT_DICE_VALUES);
@@ -51,7 +55,7 @@ function Controls(): JSX.Element {
       .filter((value) => !isNaN(Number(value)) && value !== activePlayer)
     ))[0];
     if (!isRoundEnded) {
-      dispatch(setActivePlayer(+nextPlayer));
+      // dispatch(setActivePlayer(+nextPlayer));
     }
   },[isRoundEnded]);
 
@@ -81,8 +85,10 @@ function Controls(): JSX.Element {
     rollDice();
   };
 
-  const handleHoldButtonClick = async (evt: MouseEvent<HTMLButtonElement>): Promise<void> => {
-    setPlayerTotalScore((state) => state + playerCurrentScore);
+  // const handleHoldButtonClick = async (evt: MouseEvent<HTMLButtonElement>): Promise<void> => {
+  const handleHoldButtonClick = (evt: MouseEvent<HTMLButtonElement>): void => {
+    holdButtonHandler();
+    // setPlayerTotalScore((state) => state + playerCurrentScore);
     // resetCurrentValue();
     // if (!isRoundEnded) {
     //   setTimeout(() => {
